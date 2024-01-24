@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:selaty_app/views/confirm_password_view.dart';
+import 'package:selaty_app/widgets/custom_password_text_field.dart';
 import 'package:selaty_app/widgets/custom_text_field.dart';
 import 'package:selaty_app/widgets/styles.dart';
 
@@ -13,6 +14,8 @@ class ChangePasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isPortrait =  MediaQuery.of(context).orientation ==
+        Orientation.portrait;
     return Scaffold(
       backgroundColor: const Color(0xffFDFDFF),
       appBar: const CustomAppBar(title: 'تغيير كلمة المرور'),
@@ -21,14 +24,13 @@ class ChangePasswordView extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.symmetric(
                 horizontal:
-                MediaQuery.of(context).orientation == Orientation.portrait
+                isPortrait
                     ? 20
                     : MediaQuery.sizeOf(context).width / 4),
             child: CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
-                  child: SizedBox(height: MediaQuery.of(context).orientation ==
-                      Orientation.portrait
+                  child: SizedBox(height: isPortrait
                       ? 20
                       : 0,),
                 ),
@@ -42,28 +44,19 @@ class ChangePasswordView extends StatelessWidget {
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: SizedBox(height: MediaQuery.of(context).orientation ==
-                      Orientation.portrait
+                  child: SizedBox(height: isPortrait
                       ? 20
                       : 10,),
                 ),
                  SliverToBoxAdapter(
-                  child: CustomTextField(
+                  child: CustomPasswordTextFormField(
                     text: 'كلمة المرور الحالية',
-                    isPassword: true,
-                    icon: const Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey,
-                      size: 28,
-                    ),
-                    width: orientation == Orientation.portrait
-                        ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
+                    width: isPortrait ? MediaQuery.sizeOf(context).width
+                        : MediaQuery.sizeOf(context).width / 2, height:isPortrait ? 50 : 40 ,
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: SizedBox(height: MediaQuery.of(context).orientation ==
-                      Orientation.portrait
+                  child: SizedBox(height: isPortrait
                       ? 20
                       : 10,),
                 ),
@@ -76,9 +69,9 @@ class ChangePasswordView extends StatelessWidget {
                       color: Colors.grey,
                       size: 28,
                     ),
-                    width: orientation == Orientation.portrait
+                    width: isPortrait
                         ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
+                        : MediaQuery.sizeOf(context).width / 2, height: isPortrait ? 50 : 40,
                   ),
                 ),
                 const SliverToBoxAdapter(
@@ -89,8 +82,7 @@ class ChangePasswordView extends StatelessWidget {
 
                 SliverToBoxAdapter(
                   child: CustomButton(
-                    height: MediaQuery.of(context).orientation ==
-                        Orientation.portrait
+                    height: isPortrait
                         ? 50
                         : 50,
                     text: 'تغيير',
@@ -98,8 +90,7 @@ class ChangePasswordView extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, ConfirmPasswordView.id);
                     },
-                    width: orientation == Orientation.portrait
-                        ? MediaQuery.sizeOf(context).width
+                    width: isPortrait? MediaQuery.sizeOf(context).width
                         : MediaQuery.sizeOf(context).width / 2,
                   ),
                 ),

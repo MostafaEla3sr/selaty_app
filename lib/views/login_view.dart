@@ -3,6 +3,7 @@ import 'package:selaty_app/views/change_password_view.dart';
 import 'package:selaty_app/views/home_view.dart';
 import 'package:selaty_app/views/register_view.dart';
 import 'package:selaty_app/widgets/custom_app_bar.dart';
+import 'package:selaty_app/widgets/custom_password_text_field.dart';
 import 'package:selaty_app/widgets/styles.dart';
 
 import '../constants.dart';
@@ -15,8 +16,9 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isPortrait = MediaQuery.of(context).orientation ==
+    bool isPortrait = MediaQuery.of(context).orientation ==
         Orientation.portrait;
+    double screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: const Color(0xffFDFDFF),
       appBar: const CustomAppBar(),
@@ -27,7 +29,7 @@ class LoginView extends StatelessWidget {
                 horizontal:
                    isPortrait
                         ? 20
-                        : MediaQuery.sizeOf(context).width / 4),
+                        : screenWidth / 4),
             child: CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
@@ -87,8 +89,8 @@ class LoginView extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: CustomTextField(
                     width: isPortrait
-                        ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
+                        ? screenWidth
+                        : screenWidth / 2,
                     height: isPortrait
                         ? 50
                         : 40,
@@ -105,21 +107,17 @@ class LoginView extends StatelessWidget {
                   height: 10,
                 )),
                 SliverToBoxAdapter(
-                  child: CustomTextField(
+                  child: CustomPasswordTextFormField(
                     width: isPortrait
-                        ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
+                        ? screenWidth
+                        : screenWidth / 2,
                     height: MediaQuery.of(context).orientation ==
                             Orientation.portrait
                         ? 50
                         : 40,
-                    isPassword: true,
+
                     text: 'كلمة السـر',
-                    icon: const Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey,
-                      size: 24,
-                    ),
+
                   ),
                 ),
                 SliverToBoxAdapter(
@@ -151,8 +149,8 @@ class LoginView extends StatelessWidget {
                       Navigator.pushNamed(context, HomeView.id);
                     },
                     width: isPortrait
-                        ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
+                        ? screenWidth
+                        : screenWidth / 2,
                   ),
                 ),
                 SliverFillRemaining(
@@ -171,7 +169,7 @@ class LoginView extends StatelessWidget {
                             ),
                             GestureDetector(
                               child: const Text(
-                                '\u25B6 أنشئ حساب',
+                                'أنشئ حساب',
                                 style: Styles.textStyle16,
 
                               ),

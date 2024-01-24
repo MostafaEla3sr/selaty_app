@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:selaty_app/constants.dart';
 import 'package:selaty_app/widgets/custom_app_bar.dart';
 import 'package:selaty_app/widgets/custom_button.dart';
+import 'package:selaty_app/widgets/custom_password_text_field.dart';
 import 'package:selaty_app/widgets/custom_text_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:selaty_app/widgets/styles.dart';
@@ -16,6 +17,9 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isPortrait = MediaQuery.of(context).orientation ==
+        Orientation.portrait;
+    double screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: const Color(0xffFDFDFF),
       appBar: const CustomAppBar(),
@@ -24,15 +28,14 @@ class RegisterView extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.symmetric(
                 horizontal:
-                    MediaQuery.of(context).orientation == Orientation.portrait
+                isPortrait
                         ? 20
-                        : MediaQuery.sizeOf(context).width / 4),
+                        :screenWidth / 4),
             child: CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
                   child: SizedBox(
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
+                    height: isPortrait
                         ? 20
                         : 0,
                   ),
@@ -49,19 +52,17 @@ class RegisterView extends StatelessWidget {
                 ),
                 SliverToBoxAdapter(
                   child: SizedBox(
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
+                    height: isPortrait
                         ? 20
                         : 10,
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: CustomTextField(
-                    width: orientation == Orientation.portrait
-                        ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
+                    width: isPortrait
+                        ? screenWidth
+                        : screenWidth / 2,
+                    height: isPortrait
                         ? 50
                         : 40,
                     text: 'الاسم',
@@ -73,11 +74,10 @@ class RegisterView extends StatelessWidget {
                 )),
                 SliverToBoxAdapter(
                   child: CustomTextField(
-                    width: orientation == Orientation.portrait
-                        ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
+                    width: isPortrait
+                        ? screenWidth
+                        : screenWidth / 2,
+                    height: isPortrait
                         ? 50
                         : 40,
                     text: 'عنوان البريد الالكتروني',
@@ -93,35 +93,26 @@ class RegisterView extends StatelessWidget {
                   height: 10,
                 )),
                 SliverToBoxAdapter(
-                  child: CustomTextField(
-                    width: orientation == Orientation.portrait
-                        ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
+                  child: CustomPasswordTextFormField(
+                    width: isPortrait
+                        ? screenWidth
+                        : screenWidth / 2,
+                    height: isPortrait
                         ? 50
                         : 40,
-                    isPassword: true,
                     text: 'كلمة المرور',
-                    icon: const Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey,
-                      size: 24,
-                    ),
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: SizedBox(
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
+                    height: isPortrait
                         ? 20
                         : 0,
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: CustomButton(
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
+                    height:isPortrait
                         ? 50
                         : 40,
                     text: 'اشتراك',
@@ -129,15 +120,14 @@ class RegisterView extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, CheckPhoneNumberView.id);
                     },
-                    width: orientation == Orientation.portrait
-                        ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2,
+                    width:isPortrait
+                        ? screenWidth
+                        : screenWidth / 2,
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: SizedBox(
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
+                    height: isPortrait
                         ? 20
                         : 0,
                   ),
@@ -154,9 +144,9 @@ class RegisterView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomButtonRegister(
-                            width: orientation == Orientation.portrait
-                                ? MediaQuery.sizeOf(context).width / 2.5
-                                : MediaQuery.sizeOf(context).width / 4.5,
+                            width: isPortrait
+                                ? screenWidth / 2.5
+                                : screenWidth / 4.5,
                             text: 'Facebook',
                             color: const Color(0xff3C5A9A),
                             icon: const FaIcon(
@@ -169,9 +159,9 @@ class RegisterView extends StatelessWidget {
                             width: 20,
                           ),
                           CustomButtonRegister(
-                            width: orientation == Orientation.portrait
-                                ? MediaQuery.sizeOf(context).width / 2.5
-                                : MediaQuery.sizeOf(context).width / 4.5,
+                            width: isPortrait
+                                ? screenWidth / 2.5
+                                : screenWidth / 4.5,
                             color: kRed,
                             text: 'Google',
                             icon: const FaIcon(
@@ -201,7 +191,7 @@ class RegisterView extends StatelessWidget {
                             ),
                             GestureDetector(
                               child: const Text(
-                                '\u25B6 تسجيل الدخول',
+                                'تسجيل الدخول',
                                 style: Styles.textStyle16,
                               ),
                               onTap: () {
