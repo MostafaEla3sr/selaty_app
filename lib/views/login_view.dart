@@ -20,8 +20,8 @@ class LoginView extends StatelessWidget {
 
     final TextEditingController passwordController = TextEditingController();
 
-    bool isPortrait = MediaQuery.of(context).orientation ==
-        Orientation.portrait;
+    bool isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     double screenWidth = MediaQuery.sizeOf(context).width;
 
     GlobalKey<FormState> formKey = GlobalKey();
@@ -33,27 +33,20 @@ class LoginView extends StatelessWidget {
         builder: (context, orientation) {
           return Padding(
             padding: EdgeInsets.symmetric(
-                horizontal:
-                   isPortrait
-                        ? 20
-                        : screenWidth / 4),
+                horizontal: isPortrait ? 20 : screenWidth / 4),
             child: Form(
               key: formKey,
               child: CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
                     child: SizedBox(
-                      height: isPortrait
-                          ? 50
-                          : 0,
+                      height: isPortrait ? 50 : 0,
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: isPortrait
-                              ? 30
-                              : 0),
+                      padding:
+                          EdgeInsets.symmetric(vertical: isPortrait ? 30 : 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -63,9 +56,7 @@ class LoginView extends StatelessWidget {
                                 'ســـــــــــلتي',
                                 style: TextStyle(
                                   color: kRedText,
-                                  fontSize: isPortrait
-                                      ? 34
-                                      : 24,
+                                  fontSize: isPortrait ? 34 : 24,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'NotoKufiArabic',
                                 ),
@@ -74,9 +65,7 @@ class LoginView extends StatelessWidget {
                                 'S    E    L    A    T    Y',
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: isPortrait
-                                      ? 18
-                                      : 12,
+                                  fontSize: isPortrait ? 18 : 12,
                                   fontWeight: FontWeight.w900,
                                 ),
                               ),
@@ -87,9 +76,7 @@ class LoginView extends StatelessWidget {
                           ),
                           Image.asset(
                             'assets/images/logo.png',
-                            width: isPortrait
-                                ? 100
-                                : 70,
+                            width: isPortrait ? 100 : 70,
                           ),
                         ],
                       ),
@@ -98,9 +85,7 @@ class LoginView extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: CustomTextField(
                       controller: emailController,
-                      width: isPortrait
-                          ? screenWidth
-                          : screenWidth / 2,
+                      width: isPortrait ? screenWidth : screenWidth / 2,
                       text: 'عنوان البريد الالكتروني',
                       icon: const Icon(
                         Icons.check_circle_outline,
@@ -116,12 +101,8 @@ class LoginView extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: CustomPasswordTextFormField(
                       controller: passwordController,
-                      width: isPortrait
-                          ? screenWidth
-                          : screenWidth / 2,
-
+                      width: isPortrait ? screenWidth : screenWidth / 2,
                       text: 'كلمة السـر',
-
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -137,29 +118,21 @@ class LoginView extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(
                     child: SizedBox(
-                      height: isPortrait
-                          ? 30
-                          : 0,
+                      height: isPortrait ? 30 : 0,
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: CustomButton(
-                      height: isPortrait
-                          ? 50
-                          : 40,
+                      height: isPortrait ? 50 : 40,
                       text: 'تسجيل الدخول',
                       color: kGreen,
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           Navigator.pushNamed(context, HomeView.id);
-
-                        } else {
-                        }
+                        } else {}
                       },
-                      width: isPortrait
-                          ? screenWidth
-                          : screenWidth / 2,
+                      width: isPortrait ? screenWidth : screenWidth / 2,
                     ),
                   ),
                   SliverFillRemaining(
@@ -180,7 +153,6 @@ class LoginView extends StatelessWidget {
                                 child: const Text(
                                   'أنشئ حساب',
                                   style: Styles.textStyle16,
-
                                 ),
                                 onTap: () {
                                   Navigator.pushNamed(context, RegisterView.id);

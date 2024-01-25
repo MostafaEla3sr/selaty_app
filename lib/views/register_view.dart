@@ -17,8 +17,8 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isPortrait = MediaQuery.of(context).orientation ==
-        Orientation.portrait;
+    bool isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     double screenWidth = MediaQuery.sizeOf(context).width;
     final TextEditingController emailController = TextEditingController();
     final TextEditingController nameController = TextEditingController();
@@ -33,19 +33,14 @@ class RegisterView extends StatelessWidget {
         builder: (context, orientation) {
           return Padding(
             padding: EdgeInsets.symmetric(
-                horizontal:
-                isPortrait
-                        ? 20
-                        :screenWidth / 4),
+                horizontal: isPortrait ? 20 : screenWidth / 4),
             child: Form(
               key: formKey,
               child: CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
                     child: SizedBox(
-                      height: isPortrait
-                          ? 20
-                          : 0,
+                      height: isPortrait ? 20 : 0,
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -60,18 +55,13 @@ class RegisterView extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(
                     child: SizedBox(
-                      height: isPortrait
-                          ? 20
-                          : 10,
+                      height: isPortrait ? 20 : 10,
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: CustomTextField(
                       controller: nameController,
-                      width: isPortrait
-                          ? screenWidth
-                          : screenWidth / 2,
-
+                      width: isPortrait ? screenWidth : screenWidth / 2,
                       text: 'الاسم',
                     ),
                   ),
@@ -82,10 +72,7 @@ class RegisterView extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: CustomTextField(
                       controller: emailController,
-                      width: isPortrait
-                          ? screenWidth
-                          : screenWidth / 2,
-
+                      width: isPortrait ? screenWidth : screenWidth / 2,
                       text: 'عنوان البريد الالكتروني',
                       icon: const Icon(
                         Icons.check_circle_outline,
@@ -101,45 +88,32 @@ class RegisterView extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: CustomPasswordTextFormField(
                       controller: passwordController,
-                      width: isPortrait
-                          ? screenWidth
-                          : screenWidth / 2,
-
+                      width: isPortrait ? screenWidth : screenWidth / 2,
                       text: 'كلمة المرور',
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: SizedBox(
-                      height: isPortrait
-                          ? 20
-                          : 0,
+                      height: isPortrait ? 20 : 0,
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: CustomButton(
-                      height:isPortrait
-                          ? 50
-                          : 40,
+                      height: isPortrait ? 50 : 40,
                       text: 'اشتراك',
                       color: kGreen,
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           Navigator.pushNamed(context, CheckPhoneNumberView.id);
-
-                        } else {
-                        }
+                        } else {}
                       },
-                      width:isPortrait
-                          ? screenWidth
-                          : screenWidth / 2,
+                      width: isPortrait ? screenWidth : screenWidth / 2,
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: SizedBox(
-                      height: isPortrait
-                          ? 20
-                          : 0,
+                      height: isPortrait ? 20 : 0,
                     ),
                   ),
                   SliverToBoxAdapter(

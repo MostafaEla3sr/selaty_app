@@ -10,7 +10,9 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){Navigator.pushNamed(context, ShoppingCartView.id);},
+      onTap: () {
+        Navigator.pushNamed(context, ShoppingCartView.id);
+      },
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -36,10 +38,10 @@ class ItemCard extends StatelessWidget {
                       bottomRight: Radius.circular(0.0),
                     ),
                   ),
-                  child:  Center(
+                  child: Center(
                     child: Text(
                       'جديد',
-                      style:Styles.textStyle12.copyWith(color: Colors.white),
+                      style: Styles.textStyle12.copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -51,10 +53,13 @@ class ItemCard extends StatelessWidget {
                     size: 18,
                   ),
                 ),
-      
               ],
             ),
-            Image.asset('assets/images/fruits.png' , height: 80, width: 150,),
+            Image.asset(
+              'assets/images/fruits.png',
+              height: 80,
+              width: 150,
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -83,7 +88,6 @@ class ItemCard extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     Text(
                       'طبق فواكه',
                       style: Styles.textStyle12.copyWith(
@@ -100,8 +104,8 @@ class ItemCard extends StatelessWidget {
                 ),
               ),
             ),
-           const Spacer(),
-        Container(
+            const Spacer(),
+            Container(
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -118,7 +122,7 @@ class ItemCard extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(right: 10 , left: 10 , bottom: 4),
+                padding: const EdgeInsets.only(right: 10, left: 10, bottom: 4),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -127,22 +131,21 @@ class ItemCard extends StatelessWidget {
                       '40 EGP',
                       style: Styles.textStyle12Bold,
                     ),
-                     Container(
-                          height: 30,
-                          width: 30,
-                          decoration: const BoxDecoration(
-                            color: kRed,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(50),
-                            ),
-                          ),
-                          child: const Icon(
-                            FontAwesomeIcons.calendarPlus,
-                            color: Colors.white,
-                            size: 16,
-                          ),),
-      
-      
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: const BoxDecoration(
+                        color: kRed,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(50),
+                        ),
+                      ),
+                      child: const Icon(
+                        FontAwesomeIcons.calendarPlus,
+                        color: Colors.white,
+                        size: 16,
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -52,7 +52,7 @@ class HomeView extends StatelessWidget {
           const SliverToBoxAdapter(
             child: CategoriesSection(),
           ),
-           SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Row(
@@ -75,7 +75,10 @@ class HomeView extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.only(right: isPortrait ? 10 : MediaQuery.sizeOf(context).width/4, left: isPortrait ? 10 : MediaQuery.sizeOf(context).width/4, top: 20),
+              padding: EdgeInsets.only(
+                  right: isPortrait ? 10 : MediaQuery.sizeOf(context).width / 4,
+                  left: isPortrait ? 10 : MediaQuery.sizeOf(context).width / 4,
+                  top: 20),
               child: Container(
                 width: MediaQuery.sizeOf(context).width,
                 height: 180,
@@ -90,10 +93,10 @@ class HomeView extends StatelessWidget {
               ),
             ),
           ),
-           SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Padding(
-              padding:
-                  const EdgeInsets.only(right: 10, left: 10, top: 20, bottom: 10),
+              padding: const EdgeInsets.only(
+                  right: 10, left: 10, top: 20, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -131,7 +134,10 @@ class HomeView extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.only(right: isPortrait ? 10 : MediaQuery.sizeOf(context).width/4, left: isPortrait ? 10 : MediaQuery.sizeOf(context).width/4, top: 20),
+              padding: EdgeInsets.only(
+                  right: isPortrait ? 10 : MediaQuery.sizeOf(context).width / 4,
+                  left: isPortrait ? 10 : MediaQuery.sizeOf(context).width / 4,
+                  top: 20),
               child: Container(
                 width: MediaQuery.sizeOf(context).width,
                 height: 180,
@@ -146,10 +152,10 @@ class HomeView extends StatelessWidget {
               ),
             ),
           ),
-           SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Padding(
-              padding:
-                  const EdgeInsets.only(right: 10, left: 10, top: 20, bottom: 10),
+              padding: const EdgeInsets.only(
+                  right: 10, left: 10, top: 20, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

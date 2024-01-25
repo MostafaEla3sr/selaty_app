@@ -4,7 +4,7 @@ import 'package:selaty_app/widgets/styles.dart';
 import '../widgets/custom_app_bar.dart';
 
 class CheckPhoneView extends StatefulWidget {
-  CheckPhoneView({Key? key}) : super(key: key);
+  const CheckPhoneView({Key? key}) : super(key: key);
   static const String id = 'CheckPhoneView';
 
   @override
@@ -24,23 +24,23 @@ class _CheckPhoneViewState extends State<CheckPhoneView> {
         builder: (context, orientation) {
           return SingleChildScrollView(
             child: Padding(
-              padding:  EdgeInsets.symmetric(horizontal: orientation == Orientation.portrait
-                  ? 20
-                  : MediaQuery.sizeOf(context).width / 4,),
+              padding: EdgeInsets.symmetric(
+                horizontal: orientation == Orientation.portrait
+                    ? 20
+                    : MediaQuery.sizeOf(context).width / 4,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(
                     height: 20,
                   ),
-                   Align(
+                  Align(
                     alignment: Alignment.centerRight,
                     child: Text(
                       'أدخل رمز OTP الخاص بك هنا',
                       style: Styles.textStyle16.copyWith(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold
-                      ),
+                          color: Colors.grey, fontWeight: FontWeight.bold),
                       textDirection: TextDirection.rtl,
                     ),
                   ),
@@ -87,7 +87,8 @@ class _CheckPhoneViewState extends State<CheckPhoneView> {
                                     String validationCode = controllers
                                         .map((controller) => controller.text)
                                         .join();
-                                    print('Validation Code: $validationCode');
+                                    debugPrint(
+                                        'Validation Code: $validationCode');
                                   }
                                 }
                                 setState(
@@ -103,7 +104,7 @@ class _CheckPhoneViewState extends State<CheckPhoneView> {
                   const SizedBox(
                     height: 40,
                   ),
-                   Align(
+                  Align(
                     alignment: Alignment.centerRight,
                     child: Text(
                       'لم يصل الكود ؟',
@@ -114,7 +115,7 @@ class _CheckPhoneViewState extends State<CheckPhoneView> {
                       textDirection: TextDirection.rtl,
                     ),
                   ),
-                   Align(
+                  Align(
                     alignment: Alignment.centerRight,
                     child: Text(
                       'إعادة إرسال رمز جديد',

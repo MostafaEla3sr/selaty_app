@@ -16,32 +16,29 @@ class ChangePasswordView extends StatefulWidget {
 }
 
 class _ChangePasswordViewState extends State<ChangePasswordView> {
-
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    bool isPortrait =  MediaQuery.of(context).orientation ==
-        Orientation.portrait;
+    bool isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     return Scaffold(
       backgroundColor: const Color(0xffFDFDFF),
       appBar: const CustomAppBar(title: 'تغيير كلمة المرور'),
-      body : OrientationBuilder(
+      body: OrientationBuilder(
         builder: (context, orientation) {
           return Padding(
             padding: EdgeInsets.symmetric(
                 horizontal:
-                isPortrait
-                    ? 20
-                    : MediaQuery.sizeOf(context).width / 4),
+                    isPortrait ? 20 : MediaQuery.sizeOf(context).width / 4),
             child: CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
-                  child: SizedBox(height: isPortrait
-                      ? 20
-                      : 0,),
+                  child: SizedBox(
+                    height: isPortrait ? 20 : 0,
+                  ),
                 ),
-                 SliverToBoxAdapter(
+                SliverToBoxAdapter(
                   child: Center(
                     child: Text(
                       'أدخل كلمة المرور الجديدة',
@@ -51,26 +48,27 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: SizedBox(height: isPortrait
-                      ? 20
-                      : 10,),
-                ),
-                 SliverToBoxAdapter(
-                  child: CustomPasswordTextFormField(
-                    controller: passwordController,
-                    text: 'كلمة المرور الحالية',
-                    width: isPortrait ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2 ,
+                  child: SizedBox(
+                    height: isPortrait ? 20 : 10,
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: SizedBox(height: isPortrait
-                      ? 20
-                      : 10,),
+                  child: CustomPasswordTextFormField(
+                    controller: passwordController,
+                    text: 'كلمة المرور الحالية',
+                    width: isPortrait
+                        ? MediaQuery.sizeOf(context).width
+                        : MediaQuery.sizeOf(context).width / 2,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: isPortrait ? 20 : 10,
+                  ),
                 ),
                 SliverToBoxAdapter(
                   child: CustomPasswordTextFormField(
-                    controller:passwordController ,
+                    controller: passwordController,
                     text: 'كلمة مرور جديدة',
                     width: isPortrait
                         ? MediaQuery.sizeOf(context).width
@@ -79,21 +77,18 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                 ),
                 const SliverToBoxAdapter(
                     child: SizedBox(
-                      height: 10,
-                    )),
-
-
+                  height: 10,
+                )),
                 SliverToBoxAdapter(
                   child: CustomButton(
-                    height: isPortrait
-                        ? 50
-                        : 50,
+                    height: isPortrait ? 50 : 50,
                     text: 'تغيير',
                     color: kGreen,
                     onTap: () {
                       Navigator.pushNamed(context, ConfirmPasswordView.id);
                     },
-                    width: isPortrait? MediaQuery.sizeOf(context).width
+                    width: isPortrait
+                        ? MediaQuery.sizeOf(context).width
                         : MediaQuery.sizeOf(context).width / 2,
                   ),
                 ),
@@ -102,7 +97,6 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
           );
         },
       ),
-
     );
   }
 }

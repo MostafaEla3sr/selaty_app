@@ -16,9 +16,11 @@ class ConfirmPasswordView extends StatelessWidget {
       body: OrientationBuilder(
         builder: (context, orientation) {
           return Padding(
-            padding:  EdgeInsets.symmetric(horizontal: orientation == Orientation.portrait
-                ? 20
-                : MediaQuery.sizeOf(context).width / 4,),
+            padding: EdgeInsets.symmetric(
+              horizontal: orientation == Orientation.portrait
+                  ? 20
+                  : MediaQuery.sizeOf(context).width / 4,
+            ),
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,52 +36,46 @@ class ConfirmPasswordView extends StatelessWidget {
                         padding: const EdgeInsets.all(50),
                         child: Image.asset(
                           'assets/images/key.png',
-                          width: orientation == Orientation.portrait
-                              ? 120  :80 ,
+                          width: orientation == Orientation.portrait ? 120 : 80,
                         ),
                       ),
                     ),
                   ),
-                   SizedBox(
-                    height: orientation == Orientation.portrait
-                        ? 40
-                        : 10,
+                  SizedBox(
+                    height: orientation == Orientation.portrait ? 40 : 10,
                   ),
                   const Text(
                     'كلمة المرور الخاصه بك لها',
                     style: Styles.textStyle22,
                   ),
-                   SizedBox(
-                    height: orientation == Orientation.portrait
-                        ? 40
-                        : 10,
+                  SizedBox(
+                    height: orientation == Orientation.portrait ? 40 : 10,
                   ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, LoginView.id);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width / 2,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.white,
-                      ),
-                      child:  Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          'تم',
-                          style:Styles.textStyle24.copyWith(
-                            color: kRed,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, LoginView.id);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width / 2,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.white,
+                        ),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'تم',
+                            style: Styles.textStyle24.copyWith(
+                              color: kRed,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-
                 ],
               ),
             ),

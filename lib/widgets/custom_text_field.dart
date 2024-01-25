@@ -3,19 +3,24 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {Key? key,
-        required this.text,
-        this.icon,
-        this.isPassword = false,
-        required this.width,  this.onSaved, this.onChanged, required this.controller})
+      required this.text,
+      this.icon,
+      this.isPassword = false,
+      required this.width,
+      this.onSaved,
+      this.onChanged,
+      required this.controller})
       : super(key: key);
   final String text;
 
   final Icon? icon;
   final bool isPassword;
-  final double width ;
+  final double width;
+
   final void Function(String?)? onSaved;
   final Function(String)? onChanged;
   final TextEditingController controller;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,14 +30,16 @@ class CustomTextField extends StatelessWidget {
         onSaved: onSaved,
         onChanged: onChanged,
         validator: (value) {
-          if(value!.isEmpty){
+          if (value!.isEmpty) {
             return '$text مطلوب';
-          }else{return null;}
+          } else {
+            return null;
+          }
         },
         obscureText: isPassword,
         decoration: InputDecoration(
           contentPadding:
-          EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
           suffixIcon: icon,
           label: Text(
             text,

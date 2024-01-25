@@ -6,11 +6,12 @@ class CustomPasswordTextFormField extends StatefulWidget {
     Key? key,
     required this.text,
     required this.width,
-     required this.controller,
+    required this.controller,
   }) : super(key: key);
 
   final String text;
-  final double width ;
+  final double width;
+
   final TextEditingController controller;
 
   @override
@@ -29,26 +30,30 @@ class _CustomPasswordTextFormFieldState
       child: TextFormField(
         controller: widget.controller,
         validator: (value) {
-          if(value!.isEmpty){
+          if (value!.isEmpty) {
             return '${widget.text} مطلوب';
-          }else{return null;}
+          } else {
+            return null;
+          }
         },
         obscureText: !showPassword,
         decoration: InputDecoration(
           contentPadding:
-          const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
           suffixIcon: IconButton(
-            icon: !showPassword? const Icon(
-              FontAwesomeIcons.eye,
-              color: Colors.grey,
-              size: 18,
-            ): const Icon(
-              FontAwesomeIcons.eyeSlash,
-              color: Colors.grey,
-              size:18,
-            ),
+            icon: !showPassword
+                ? const Icon(
+                    FontAwesomeIcons.eye,
+                    color: Colors.grey,
+                    size: 18,
+                  )
+                : const Icon(
+                    FontAwesomeIcons.eyeSlash,
+                    color: Colors.grey,
+                    size: 18,
+                  ),
             onPressed: () {
-              print(showPassword);
+              debugPrint(showPassword.toString());
 
               if (showPassword == true) {
                 showPassword = false;
@@ -57,7 +62,7 @@ class _CustomPasswordTextFormFieldState
               }
 
               setState(() {});
-              print(showPassword);
+              debugPrint(showPassword.toString());
             },
           ),
           label: Text(
