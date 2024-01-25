@@ -6,21 +6,22 @@ class CustomTextField extends StatelessWidget {
         required this.text,
         this.icon,
         this.isPassword = false,
-        required this.width,  this.onSaved, this.onChanged, required this.height})
+        required this.width,  this.onSaved, this.onChanged, required this.controller})
       : super(key: key);
   final String text;
 
   final Icon? icon;
   final bool isPassword;
-  final double width , height;
+  final double width ;
   final void Function(String?)? onSaved;
   final Function(String)? onChanged;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      height: height,
       child: TextFormField(
+        controller: controller,
         onSaved: onSaved,
         onChanged: onChanged,
         validator: (value) {

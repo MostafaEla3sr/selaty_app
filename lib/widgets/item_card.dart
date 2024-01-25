@@ -123,7 +123,8 @@ class ItemCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      '40 SAR',
+                      textDirection: TextDirection.ltr,
+                      '40 EGP',
                       style: Styles.textStyle12Bold,
                     ),
                      Container(

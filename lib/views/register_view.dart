@@ -20,6 +20,12 @@ class RegisterView extends StatelessWidget {
     bool isPortrait = MediaQuery.of(context).orientation ==
         Orientation.portrait;
     double screenWidth = MediaQuery.sizeOf(context).width;
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
+    GlobalKey<FormState> formKey = GlobalKey();
+
     return Scaffold(
       backgroundColor: const Color(0xffFDFDFF),
       appBar: const CustomAppBar(),
@@ -31,180 +37,185 @@ class RegisterView extends StatelessWidget {
                 isPortrait
                         ? 20
                         :screenWidth / 4),
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: isPortrait
-                        ? 20
-                        : 0,
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: Text(
-                    'أنشاء حساب جديد',
-                    style: Styles.textStyle28.copyWith(color: Colors.black),
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: Text('أدخل بياناتك لإنشاء حساب',
-                      style: Styles.textStyle16.copyWith(color: Colors.grey)),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: isPortrait
-                        ? 20
-                        : 10,
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: CustomTextField(
-                    width: isPortrait
-                        ? screenWidth
-                        : screenWidth / 2,
-                    height: isPortrait
-                        ? 50
-                        : 40,
-                    text: 'الاسم',
-                  ),
-                ),
-                const SliverToBoxAdapter(
+            child: Form(
+              key: formKey,
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
                     child: SizedBox(
-                  height: 10,
-                )),
-                SliverToBoxAdapter(
-                  child: CustomTextField(
-                    width: isPortrait
-                        ? screenWidth
-                        : screenWidth / 2,
-                    height: isPortrait
-                        ? 50
-                        : 40,
-                    text: 'عنوان البريد الالكتروني',
-                    icon: const Icon(
-                      Icons.check_circle_outline,
-                      color: kGreen,
-                      size: 28,
+                      height: isPortrait
+                          ? 20
+                          : 0,
                     ),
                   ),
-                ),
-                const SliverToBoxAdapter(
+                  SliverToBoxAdapter(
+                    child: Text(
+                      'أنشاء حساب جديد',
+                      style: Styles.textStyle28.copyWith(color: Colors.black),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Text('أدخل بياناتك لإنشاء حساب',
+                        style: Styles.textStyle16.copyWith(color: Colors.grey)),
+                  ),
+                  SliverToBoxAdapter(
                     child: SizedBox(
-                  height: 10,
-                )),
-                SliverToBoxAdapter(
-                  child: CustomPasswordTextFormField(
-                    width: isPortrait
-                        ? screenWidth
-                        : screenWidth / 2,
-                    height: isPortrait
-                        ? 50
-                        : 40,
-                    text: 'كلمة المرور',
+                      height: isPortrait
+                          ? 20
+                          : 10,
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: isPortrait
-                        ? 20
-                        : 0,
+                  SliverToBoxAdapter(
+                    child: CustomTextField(
+                      controller: nameController,
+                      width: isPortrait
+                          ? screenWidth
+                          : screenWidth / 2,
+
+                      text: 'الاسم',
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: CustomButton(
-                    height:isPortrait
-                        ? 50
-                        : 40,
-                    text: 'اشتراك',
-                    color: kGreen,
-                    onTap: () {
-                      Navigator.pushNamed(context, CheckPhoneNumberView.id);
-                    },
-                    width:isPortrait
-                        ? screenWidth
-                        : screenWidth / 2,
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: isPortrait
-                        ? 20
-                        : 0,
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text('أو اشترك مع', style: Styles.textStyle16),
-                      const SizedBox(
-                        height: 10,
+                  const SliverToBoxAdapter(
+                      child: SizedBox(
+                    height: 10,
+                  )),
+                  SliverToBoxAdapter(
+                    child: CustomTextField(
+                      controller: emailController,
+                      width: isPortrait
+                          ? screenWidth
+                          : screenWidth / 2,
+
+                      text: 'عنوان البريد الالكتروني',
+                      icon: const Icon(
+                        Icons.check_circle_outline,
+                        color: kGreen,
+                        size: 28,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomButtonRegister(
-                            width: isPortrait
-                                ? screenWidth / 2.5
-                                : screenWidth / 4.5,
-                            text: 'Facebook',
-                            color: const Color(0xff3C5A9A),
-                            icon: const FaIcon(
-                              FontAwesomeIcons.facebookF,
-                              size: 24,
-                              color: Color(0xff3C5A9A),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          CustomButtonRegister(
-                            width: isPortrait
-                                ? screenWidth / 2.5
-                                : screenWidth / 4.5,
-                            color: kRed,
-                            text: 'Google',
-                            icon: const FaIcon(
-                              FontAwesomeIcons.googlePlusG,
-                              size: 24,
-                              color: kRed,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-                SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                  const SliverToBoxAdapter(
+                      child: SizedBox(
+                    height: 10,
+                  )),
+                  SliverToBoxAdapter(
+                    child: CustomPasswordTextFormField(
+                      controller: passwordController,
+                      width: isPortrait
+                          ? screenWidth
+                          : screenWidth / 2,
+
+                      text: 'كلمة المرور',
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: isPortrait
+                          ? 20
+                          : 0,
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: CustomButton(
+                      height:isPortrait
+                          ? 50
+                          : 40,
+                      text: 'اشتراك',
+                      color: kGreen,
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          Navigator.pushNamed(context, CheckPhoneNumberView.id);
+
+                        } else {
+                        }
+                      },
+                      width:isPortrait
+                          ? screenWidth
+                          : screenWidth / 2,
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: isPortrait
+                          ? 20
+                          : 0,
+                    ),
+                  ),
+                  SliverToBoxAdapter(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        const Text('أو اشترك مع', style: Styles.textStyle16),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'لديك حساب بالفعل؟',
-                              style: Styles.textStyle16,
-                            ),
-                            GestureDetector(
-                              child: const Text(
-                                'تسجيل الدخول',
-                                style: Styles.textStyle16,
+                            CustomButtonRegister(
+                              width: isPortrait
+                                  ? screenWidth / 2.5
+                                  : screenWidth / 4.5,
+                              text: 'Facebook',
+                              color: const Color(0xff3C5A9A),
+                              icon: const FaIcon(
+                                FontAwesomeIcons.facebookF,
+                                size: 24,
+                                color: Color(0xff3C5A9A),
                               ),
-                              onTap: () {
-                                Navigator.pushNamed(context, LoginView.id);
-                              },
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            CustomButtonRegister(
+                              width: isPortrait
+                                  ? screenWidth / 2.5
+                                  : screenWidth / 4.5,
+                              color: kRed,
+                              text: 'Google',
+                              icon: const FaIcon(
+                                FontAwesomeIcons.googlePlusG,
+                                size: 24,
+                                color: kRed,
+                              ),
                             ),
                           ],
                         ),
                       ],
                     ),
                   ),
-                ),
-              ],
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'لديك حساب بالفعل؟',
+                                style: Styles.textStyle16,
+                              ),
+                              GestureDetector(
+                                child: const Text(
+                                  'تسجيل الدخول',
+                                  style: Styles.textStyle16,
+                                ),
+                                onTap: () {
+                                  Navigator.pushNamed(context, LoginView.id);
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },

@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:selaty_app/views/confirm_password_view.dart';
 import 'package:selaty_app/widgets/custom_password_text_field.dart';
-import 'package:selaty_app/widgets/custom_text_field.dart';
 import 'package:selaty_app/widgets/styles.dart';
 
 import '../constants.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_button.dart';
 
-class ChangePasswordView extends StatelessWidget {
+class ChangePasswordView extends StatefulWidget {
   const ChangePasswordView({Key? key}) : super(key: key);
   static const String id = 'ChangePasswordView';
+
+  @override
+  State<ChangePasswordView> createState() => _ChangePasswordViewState();
+}
+
+class _ChangePasswordViewState extends State<ChangePasswordView> {
+
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +57,10 @@ class ChangePasswordView extends StatelessWidget {
                 ),
                  SliverToBoxAdapter(
                   child: CustomPasswordTextFormField(
+                    controller: passwordController,
                     text: 'كلمة المرور الحالية',
                     width: isPortrait ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2, height:isPortrait ? 50 : 40 ,
+                        : MediaQuery.sizeOf(context).width / 2 ,
                   ),
                 ),
                 SliverToBoxAdapter(
@@ -61,17 +69,12 @@ class ChangePasswordView extends StatelessWidget {
                       : 10,),
                 ),
                 SliverToBoxAdapter(
-                  child: CustomTextField(
+                  child: CustomPasswordTextFormField(
+                    controller:passwordController ,
                     text: 'كلمة مرور جديدة',
-                    isPassword: true,
-                    icon: const Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey,
-                      size: 28,
-                    ),
                     width: isPortrait
                         ? MediaQuery.sizeOf(context).width
-                        : MediaQuery.sizeOf(context).width / 2, height: isPortrait ? 50 : 40,
+                        : MediaQuery.sizeOf(context).width / 2,
                   ),
                 ),
                 const SliverToBoxAdapter(

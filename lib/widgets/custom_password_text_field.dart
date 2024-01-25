@@ -6,11 +6,12 @@ class CustomPasswordTextFormField extends StatefulWidget {
     Key? key,
     required this.text,
     required this.width,
-    required this.height,
+     required this.controller,
   }) : super(key: key);
 
   final String text;
-  final double width , height;
+  final double width ;
+  final TextEditingController controller;
 
   @override
   State<CustomPasswordTextFormField> createState() =>
@@ -25,8 +26,8 @@ class _CustomPasswordTextFormFieldState
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
-      height: widget.height,
       child: TextFormField(
+        controller: widget.controller,
         validator: (value) {
           if(value!.isEmpty){
             return '${widget.text} مطلوب';
