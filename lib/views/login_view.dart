@@ -10,21 +10,27 @@ import '../constants.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
   static const String id = 'LoginView';
 
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
+  State<LoginView> createState() => _LoginViewState();
+}
 
-    final TextEditingController passwordController = TextEditingController();
+class _LoginViewState extends State<LoginView> {
+  final TextEditingController emailController = TextEditingController();
+
+  final TextEditingController passwordController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  Widget build(BuildContext context) {
 
     bool isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
     double screenWidth = MediaQuery.sizeOf(context).width;
 
-    GlobalKey<FormState> formKey = GlobalKey();
 
     return Scaffold(
       backgroundColor: const Color(0xffFDFDFF),

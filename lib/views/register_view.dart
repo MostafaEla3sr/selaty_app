@@ -11,18 +11,25 @@ import '../widgets/custom_button_register.dart';
 import 'check_phone_number_view.dart';
 import 'login_view.dart';
 
-class RegisterView extends StatelessWidget {
+class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
   static const String id = 'RegisterView';
+
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     bool isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
     double screenWidth = MediaQuery.sizeOf(context).width;
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
 
     GlobalKey<FormState> formKey = GlobalKey();
 
